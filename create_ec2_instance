@@ -1,0 +1,10 @@
+import boto3
+import boto3.utils
+import botocore.session
+session = boto3.Session(profile_name="default")
+ec2_re = session.resource(service_name="ec2")
+instance = ec2_re.create_instances(
+    ImageId = 'ami-015954d5e5548d13b',
+    MinCount = 1,
+    InstanceType = 't2.micro'
+)
