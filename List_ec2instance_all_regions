@@ -1,0 +1,10 @@
+#!/usr/bin/env python
+import boto3
+import boto3.utils
+import botocore.session
+session_r = boto3.Session(profile_name="default")
+ec2_cli = session_r.client(service_name="ec2")
+for each_in in ec2_cli.describe_instances()['Reservations']:
+    for each_in in each_in['Instances']:
+        print(each_in['InstanceId'],each_in['State']['Name'])
+
