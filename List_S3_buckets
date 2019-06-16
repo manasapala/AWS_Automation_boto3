@@ -1,0 +1,7 @@
+import boto3
+import boto3.utils
+import botocore.session
+session = boto3.Session(profile_name="default")
+s3_re = session.resource(service_name="s3")
+for bucket in s3_re.buckets.all():
+    print(bucket.name)
